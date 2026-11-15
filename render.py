@@ -6,6 +6,7 @@ LANG = sys.argv[1]; MODE = sys.argv[2]
 ROOT = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.join(ROOT, 'out', LANG); os.makedirs(OUT, exist_ok=True)
 FPS = 30
 PAGE = os.environ.get('PAGE', 'index.html')
+QS = os.environ.get('QS', '')  # e.g. QS='&nocaps=1' to render the 3D layer without text
 src = open(os.path.join(ROOT, f'data_{LANG}.js'), encoding='utf-8').read()
 CUTS = json.loads(re.search(r'CUTS\s*=\s*(\[[^\]]*\])', src).group(1))
 
@@ -15,7 +16,7 @@ async def main():
         pg = await b.new_page(viewport={'width': 1080, 'height': 1920})
         pg.on('console', lambda m: print('console:', m.text) if m.type in ('error', 'warning') else None)
         pg.on('pageerror', lambda e: print('pageerror:', e))
-        await pg.goto(f'http://127.0.0.1:8765/{PAGE}?lang={LANG}')
+        await pg.goto(f'http://127.0.0.1:8765/{PAGE}?lang={LANG}{QS}')
         await pg.wait_for_function('window.READY===true', timeout=60000)
         if MODE == 'stills':
             for t in sys.argv[3].split(','):

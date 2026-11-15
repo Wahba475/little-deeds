@@ -265,6 +265,7 @@ window.renderFrame=function(t){
   drawBg(t,inBowl?.9:v.warm,fk); renderer.render(scene,cam); drawCaps(rt); drawPill(rt);
   return true;
 };
+if(new URLSearchParams(location.search).get('nocaps')){ for(const id of ['cap','pill','ref','ar']){ const e=document.getElementById(id); if(e) e.style.display='none'; } }
 await document.fonts.ready;
 window.renderFrame(0); window.READY=true;
 </script></body></html>

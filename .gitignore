@@ -1,3 +1,7 @@
 node_modules/
 out/
 hadith/
+remotion/node_modules/
+remotion/out/
+remotion/public/*.mp4
+remotion/public/*.mp3

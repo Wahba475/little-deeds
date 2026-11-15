@@ -1,0 +1,19 @@
+{
+  "name": "little-deeds-remotion",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "render": "remotion render src/index.ts Short --browser-executable=/usr/bin/google-chrome --gl=swiftshader --concurrency=2"
+  },
+  "dependencies": {
+    "@react-three/fiber": "^9.8.2",
+    "@remotion/captions": "4.0.543",
+    "@remotion/cli": "4.0.543",
+    "@remotion/fonts": "4.0.543",
+    "@remotion/three": "4.0.543",
+    "react": "^19",
+    "react-dom": "^19",
+    "remotion": "4.0.543",
+    "three": "^0.187.0"
+  }
+}

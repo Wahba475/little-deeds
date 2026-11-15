@@ -304,6 +304,7 @@ window.renderFrame=function(t){
   const ro=D.REFS.reduce((m,r)=>Math.max(m,sm((rt-r.from)/.3)*(1-sm((rt-r.to)/.2))),0); refEl.style.opacity=ro;
   return true;
 };
+if(new URLSearchParams(location.search).get('nocaps')){ for(const id of ['cap','pill','ref','ar']){ const e=document.getElementById(id); if(e) e.style.display='none'; } }
 await document.fonts.ready;
 window.renderFrame(0); window.READY=true;
 </script></body></html>
